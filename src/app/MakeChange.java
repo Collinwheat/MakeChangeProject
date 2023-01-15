@@ -19,17 +19,17 @@ public class MakeChange {
 		input.close();
 
 		double change = amtGiven - cost;
+		change = (change + .005);
 		
 		int numOfDollars = (int) change;
 		
 		int numOfCents = (int) (100 * (change - numOfDollars));
 
-		System.out.println("Total Change due: " + (change));
-
 		if (change < 0) {
 			System.out.println("Insufficient Funds");
 		}
 		if (change > 0) {
+			System.out.println("Change Due: \n");
 			printDollars(numOfDollars, numOfCents);
 			
 		}
@@ -38,6 +38,7 @@ public class MakeChange {
 
 	public static void printDollars(int dollars, int cents) {
 		
+		cents = Math.round(cents);
 		int numOfTwenties = dollars / 20;
 		dollars = dollars % 20;
 		int numOfTens = dollars / 10;
@@ -52,7 +53,7 @@ public class MakeChange {
 		cents = cents % 10;
 		int numOfNickles = cents / 5;
 		cents = cents % 5;
-		int numOfPennies = cents / 1;
+		int numOfPennies = cents / 1; 
 		
 		if (numOfTwenties > 0) {
 			System.out.println("$20's : " + numOfTwenties);
